@@ -4,11 +4,11 @@ using namespace std;
 int main(void)
 {
 	ios_base::sync_with_stdio;
-    cin.tie(NULL);
+    	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N = 0;  // ¹Ğ°¡·çÀÇ Å°·Î¼ö¸¦ ÀÔ·Â¹Ş´Â´Ù.
-    cin >> N;
+	int N = 0;  // ë°€ê°€ë£¨ì˜ í‚¤ë¡œìˆ˜ë¥¼ ì…ë ¥ë°›ëŠ”ë‹¤.
+   	cin >> N;
 	int a = N / 5;
 	
 
