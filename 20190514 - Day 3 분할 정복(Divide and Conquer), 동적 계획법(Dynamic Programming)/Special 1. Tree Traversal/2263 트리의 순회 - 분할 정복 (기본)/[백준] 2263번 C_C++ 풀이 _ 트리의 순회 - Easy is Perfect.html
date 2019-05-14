@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://melonicedlatte.com/algorithm/2018/02/04/145104.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Global site tag (gtag.js) - Google Analytics -->
+	<script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/osd.js.다운로드"></script><script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/sdk.js(2).다운로드" async="" crossorigin="anonymous"></script><script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/ca-pub-9601240193039960.js.다운로드"></script><script type="text/javascript" async="" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/analytics.js.다운로드"></script><script async="" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/js"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-136793184-1');
+		
+			gtag('config', 'UA-136793184-1', { 'anonymize_ip': true });
+		
+	</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>[백준] 2263번 C/C++ 풀이 _ 트리의 순회 - Easy is Perfect</title>
+
+<meta name="description" content="&gt; 출처 : https://www.acmicpc.net/problem/2263 &gt; 문제 설명 : 트리의 순회시간 제한메모리 제한제출정답맞은 사람정답 비율5 초128 MB140257241141.684%문제n개의 정점을 갖는 이진 트리의 정점에 1...">
+<link rel="canonical" href="http://melonicedlatte.com/algorithm/2018/02/04/145104.html"><link rel="alternate" type="application/rss+xml" title="Easy is Perfect" href="http://melonicedlatte.com/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="http://melonicedlatte.com/assets/images/logo/logo.svg"><link rel="icon" sizes="32x32" href="http://melonicedlatte.com/assets/images/logo/logo.svg"><link rel="icon" sizes="16x16" href="http://melonicedlatte.com/assets/images/logo/logo.svg"><link rel="manifest" href="http://melonicedlatte.com/assets/site.webmanifest"><link rel="mask-icon" href="http://melonicedlatte.com/assets/images/logo/logo.svg" color="#fc4d50"><link rel="shortcut icon" href="http://melonicedlatte.com/assets/images/logo/logo.svg">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/images/logo/logo.svg">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/main.css"><link rel="stylesheet" href="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/all.css"><!-- start custom head snippets -->
+<script async="" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f.txt"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9601240193039960",
+          enable_page_level_ads: true
+     });
+</script><link rel="preload" href="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f(1).txt" as="script"><script type="text/javascript" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f(1).txt"></script><link rel="preload" href="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f(2).txt" as="script"><script type="text/javascript" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f(2).txt"></script><link rel="preload" href="http://pagead2.googlesyndication.com/pagead/js/r20190506/r20190131/show_ads_impl.js" as="script">
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.decodeUrl = function(str) {
+    return str ? decodeURIComponent(str.replace(/\+/g, '%20')) : '';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn1.lncld.net/static/js/3.4.1/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3,h4'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script><script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/jquery.min.js.다운로드"></script><script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/embed.js.다운로드" data-timestamp="1557677706431"></script><script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/search.js.다운로드"></script><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.694ea7181ea49f1ce306dfc00c532f53.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.2b6bb3725200b8d992a8cb9c288952d3.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.e04d6946f2fad54035486025e9a4979a.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#1d3c78;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style><script src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/alfalfa_min.d078e4f2a4721192a99e02601a767617.js.다운로드" async="" charset="UTF-8"></script></head><iframe id="google_shimpl" style="display: none;" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource.html"></iframe>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><!--?xml version="1.0" encoding="iso-8859-1"?-->
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="270.054px" height="270.054px" viewBox="0 0 270.054 270.054" style="enable-background:new 0 0 270.054 270.054;" xml:space="preserve">
+<g>
+	<g>
+		<path d="M266.639,78.803c-9.4-1.7-18.9-2.2-28.4-3c8.8-8,16.699-16.7,21.5-27.9c1.6-3.7-0.2-8.6-4.9-8.5
+			c-12.4,0.3-24.4,3-36.3,6.6c-45.7-56.9-107.8,34-155.2,87.4c-0.8-5-2.3-10-3.2-14c-2.4-10.3-6.9-24.2-18.6-26.8
+			c-12.4-2.7-16.8,9.9-16,19.6c0.2,2.9,0.8,5.9,1.5,8.8c-5.2-4.3-10.8-7.4-16.8-7.9c-9.6-0.8-10.9,11.2-10,17.8
+			c1.3,10.1,10.7,35.6,23.6,41.6c1,2.9,3.7,5.3,7,4c0.3-0.1,0.5-0.3,0.8-0.4c8.2,9.601,26.9,9.601,38.1,11
+			c14.7,1.801,29.8,2.4,44.9,2.301c-4.7,16.6-3,44,14.4,52.399c2.6,1.3,6.6-1.6,4.4-4.399c-11-14.801-16.3-29.5-15.2-48
+			c12.5-0.2,25.1-0.9,37.4-2c-5.301,16.8,2.899,45.5,23.899,45.399c4,0,6.101-6,2.101-7.899c-8.101-3.801-14.301-6-18.101-15
+			c-3.101-7.5-2.5-15.2-2.5-23.101c3.2-0.3,6.3-0.6,9.5-1c48.3-5.5,75.101-41.3,71.3-82.799c0.5,0.1,1,0,1.5-0.2
+			c9.4-3.6,16.1-9.4,24.2-15.2C270.838,85.603,271.238,79.703,266.639,78.803z M45.238,106.403c7.8,11.2,4.8,25.5,8.6,37.399
+			c-1.4,1.4-2.7,2.8-4,4.101c0-0.7-0.2-1.4-0.7-2.101c-4.3-6.2-7.3-13.7-9.9-20.6c-1.9-5-3.3-10.2-3.9-15.5
+			C34.638,101.803,41.138,100.403,45.238,106.403z M27.438,165.403c-9.1-5.9-15.1-24-16.8-31.2c-0.8-3.2-3.1-12.4,1.7-11
+			c11.8,3.6,22.3,19.399,29.6,28.3c0.8,1,1.8,1.4,2.8,1.4C38.438,158.602,32.738,162.903,27.438,165.403z M157.438,176.403
+			c-40.799,4.1-80.299,3-120.399-2.801c56.5-28.3,72.2-115,136-132.299c21.5-5.8,38.5,14.4,48.8,34.3c-0.199,0.2-0.4,0.4-0.6,0.5
+			c-4.1,3.5-0.301,8.9,3.9,9.4c0.5,0.1,1,0.1,1.399,0.1c1.8,4.4,3.399,8.6,4.399,12.2
+			C245.538,147.002,196.838,172.403,157.438,176.403z"></path>
+		<path d="M192.438,63.903c-1.799-1.2-4-0.5-5.5,0.7c-3.1,2.5-2.6,7-2.899,10.6c-0.3,2.6-1.101,5.4-2.2,7.8
+			c-1.1,2.3-2.1,3.6-3.9,5.2c-0.899,0.8-1.699,1.2-3.199,1.6c-0.1,0-0.7,0-1.2,0c0.2-0.1-0.601-0.3-0.899-0.3
+			c-0.701-0.4-1.301-1-1.601-1.8c-2.2-5.5,0.3-12,1.899-17.2c1.301-4.3-4.899-6.8-7.1-3c-4,6.8-6.8,15.6-4.5,23.5
+			c1.7,6,7.301,10.3,13.6,10c6.801-0.3,12.301-4.9,15.9-10.3c2.2-3.3,3.5-7.3,4.301-11.2
+			C196.238,74.503,197.538,67.403,192.438,63.903z"></path>
+		<path d="M180.738,131.303c-5.301-2.5-11.6,4.2-6.6,8.6c6.6,6,9.5,13.3,0.199,18.5c-13.6,7.6-20.699-15.101-22.4-23.9
+			c-1.199-6.5-10.299-4.3-10.899,1.5c0,0.1,0,0.2,0,0.3c-1-2.899-4.101-5-7.6-3.2c-0.5,0.3-1,0.6-1.6,0.9
+			c-7.9,4.599-27.3,13.599-26.2-1.7c1.1-15.9,21.8-12.5,31.299-8.6c3.9,1.6,6-4.4,2.701-6.5c-16.201-10.2-42.201-8-44.701,15.1
+			c-0.8,7.299,2.8,14.799,9.8,17.799c4.5,1.9,9.3,2,14,1.101c-1.3,5.7,0.2,11.5,6.5,15.8c11.199,7.7,18.4-1.2,22.6-11.8
+			c6.6,11.8,17.301,20.1,32.301,13.1C195.338,161.002,196.438,138.602,180.738,131.303z M131.238,157.903c-7.2-4,2.5-12.4,6.6-15
+			c0.301-0.2,0.6-0.301,0.9-0.5c0.699-0.4,1.199-1,1.699-1.5C139.238,148.302,136.639,160.903,131.238,157.903z"></path>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+<a title="Want to make some good product for world
+" href="http://melonicedlatte.com/">Easy is Perfect</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="http://melonicedlatte.com/archive">Archive</a></li><li class="navigation__item"><a href="http://melonicedlatte.com/about">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside fixed" style="left: 0px; top: 0px;"><div class="toc-aside js-toc-root"><ul class="toc toc--ellipsis"></ul></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope="" itemtype="http://schema.org/Article"><div class="article__header"><header><h1>[백준] 2263번 C/C++ 풀이 _ 트리의 순회</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github" title="Edit on Github" href="https://github.com/melonicedlatte/melonicedlatte.github.io/tree/master/_posts/2018-02-04-145104.html" target="_blank">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="[백준] 2263번 C/C++ 풀이 _ 트리의 순회"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm" href="http://melonicedlatte.com/archive.html?tag=Algorithm">Algorithm</a>
+            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>melonicedlatte</span></li><li><i class="far fa-calendar-alt"></i> <span>Feb 04, 2018</span>
+            </li></ul></div><meta itemprop="author" content="melonicedlatte"><meta itemprop="datePublished" content="2018-02-04T00:00:00+09:00">
+    <meta itemprop="keywords" content="Algorithm"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+<script async="" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f.txt"></script>
+<ins class="adsbygoogle" style="display: block; text-align: center; height: 200px;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9601240193039960" data-ad-slot="2929900697" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:902px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:902px;background-color:transparent;"><iframe width="902" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:902px;height:200px;" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>&gt; 출처 :&nbsp;<a href="https://www.acmicpc.net/problem/2263">https://www.acmicpc.net/problem/2263</a>&nbsp;</p><p>&gt; 문제 설명 :&nbsp;</p><div class="col-md-12" style="width: 1170px; color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-size: 13px; border-radius: 0px !important;"><div class="page-header" style="border-radius: 0px !important;"><h1 style="margin-top: 5px; font-size: 28px; font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-weight: normal; line-height: 35px; color: rgb(88, 95, 105); text-shadow: none; border-radius: 0px !important;"><span id="problem_title" class="" style="border-radius: 0px !important;">트리의 순회</span></h1></div></div><div class="col-md-12" style="width: 1170px; color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-size: 13px; border-radius: 0px !important;"><div class="table-responsive" style="border-radius: 0px !important;"><table class="table" id="problem-info" style="width: 1140px; border-radius: 0px !important;"><thead style="border-radius: 0px !important;"><tr style="border-radius: 0px !important;"><th style="line-height: 1.42857; border-bottom: none; width: 183.2px; border-radius: 0px !important;">시간 제한</th><th style="line-height: 1.42857; border-bottom: none; width: 182.4px; border-radius: 0px !important;">메모리 제한</th><th style="line-height: 1.42857; border-bottom: none; width: 193.6px; border-radius: 0px !important;">제출</th><th style="line-height: 1.42857; border-bottom: none; width: 193.6px; border-radius: 0px !important;">정답</th><th style="line-height: 1.42857; border-bottom: none; width: 193.6px; border-radius: 0px !important;">맞은 사람</th><th style="line-height: 1.42857; border-bottom: none; width: 193.6px; border-radius: 0px !important;">정답 비율</th></tr></thead><tbody style="border-radius: 0px !important;"><tr style="border-radius: 0px !important;"><td style="line-height: 1.42857; border-radius: 0px !important;">5 초</td><td style="line-height: 1.42857; border-radius: 0px !important;">128 MB</td><td style="line-height: 1.42857; border-radius: 0px !important;">1402</td><td style="line-height: 1.42857; border-radius: 0px !important;">572</td><td style="line-height: 1.42857; border-radius: 0px !important;">411</td><td style="line-height: 1.42857; border-radius: 0px !important;">41.684%</td></tr></tbody></table></div></div><div id="problem-body" style="color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-size: 13px; border-radius: 0px !important;"><div class="col-md-12" style="width: 1170px; border-radius: 0px !important;"><section id="description" style="border-radius: 0px !important;"><div class="headline" style="margin: 10px 0px 25px; border-bottom: 1px dotted rgb(228, 233, 240); border-radius: 0px !important;"><h2 style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-weight: normal; line-height: 33px; color: rgb(88, 95, 105); margin: 0px 0px -2px; font-size: 22px; text-shadow: none; padding-bottom: 5px; display: inline-block; border-bottom: 2px solid rgb(0, 118, 192); border-radius: 0px !important;">문제</h2></div><div id="problem_description" style="font-size: medium; line-height: 30px; border-radius: 0px !important;"><p style="margin-top: 0px; margin-bottom: 10px; color: rgb(85, 85, 85); border-radius: 0px !important;">n개의 정점을 갖는 이진 트리의 정점에 1부터 n까지의 번호가 중복 없이 매겨져 있다. 이와 같은 이진 트리의 인오더와 포스트오더가 주어졌을 때, 프리오더를 구하는 프로그램을 작성하시오.</p></div></section></div><div class="col-md-12" style="width: 1170px; border-radius: 0px !important;"><section id="input" style="border-radius: 0px !important;"><div class="headline" style="margin: 10px 0px 25px; border-bottom: 1px dotted rgb(228, 233, 240); border-radius: 0px !important;"><h2 style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-weight: normal; line-height: 33px; color: rgb(88, 95, 105); margin: 0px 0px -2px; font-size: 22px; text-shadow: none; padding-bottom: 5px; display: inline-block; border-bottom: 2px solid rgb(0, 118, 192); border-radius: 0px !important;">입력</h2></div><div id="problem_input" style="font-size: medium; line-height: 30px; border-radius: 0px !important;"><p style="margin-top: 0px; margin-bottom: 10px; color: rgb(85, 85, 85); border-radius: 0px !important;">첫째 줄에 n(1≤n≤100,000)이 주어진다. 다음 줄에는 인오더를 나타내는 n개의 자연수가 주어지고, 그 다음 줄에는 같은 식으로 포스트오더가 주어진다.</p></div></section></div><div class="col-md-12" style="width: 1170px; border-radius: 0px !important;"><section id="output" style="border-radius: 0px !important;"><div class="headline" style="margin: 10px 0px 25px; border-bottom: 1px dotted rgb(228, 233, 240); border-radius: 0px !important;"><h2 style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-weight: normal; line-height: 33px; color: rgb(88, 95, 105); margin: 0px 0px -2px; font-size: 22px; text-shadow: none; padding-bottom: 5px; display: inline-block; border-bottom: 2px solid rgb(0, 118, 192); border-radius: 0px !important;">출력</h2></div><div id="problem_output" style="font-size: medium; line-height: 30px; border-radius: 0px !important;"><p style="margin-top: 0px; margin-bottom: 10px; color: rgb(85, 85, 85); border-radius: 0px !important;">첫째 줄에 프리오더를 출력한다.</p></div></section></div><div class="col-md-12" style="width: 1170px; border-radius: 0px !important;"><div class="row" style="border-radius: 0px !important;"><div class="col-md-6" style="width: 585px; border-radius: 0px !important;"><section id="sampleinput" style="border-radius: 0px !important;"><div class="headline" style="margin: 10px 0px 25px; border-bottom: 1px dotted rgb(228, 233, 240); border-radius: 0px !important;"><h2 style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-weight: normal; line-height: 33px; color: rgb(88, 95, 105); margin: 0px 0px -2px; font-size: 22px; text-shadow: none; padding-bottom: 5px; display: inline-block; border-bottom: 2px solid rgb(0, 118, 192); border-radius: 0px !important;">예제 입력&nbsp;<button type="button" class="btn btn-link copy-button no-print" data-clipboard-target="#sample-input-1" style="font-weight: 400; line-height: 1.42857; font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; color: rgb(66, 139, 202); text-transform: none; padding: 0px; outline: 0px !important;">복사</button></h2></div><pre class="sampledata" id="sample-input-1" style="border-radius: 5px; overflow-x: scroll; font-family: Menlo, Monaco, &quot;Source Code Pro&quot;, consolas, monospace; font-size: 18px; padding: 8px; line-height: 1.42857; word-break: normal; word-wrap: normal; background-color: rgb(247, 247, 249); border-color: rgb(225, 225, 232);">3
+1 2 3
+1 3 2
+</pre></section></div><div class="col-md-6" style="width: 585px; border-radius: 0px !important;"><section id="sampleoutput" style="border-radius: 0px !important;"><div class="headline" style="margin: 10px 0px 25px; border-bottom: 1px dotted rgb(228, 233, 240); border-radius: 0px !important;"><h2 style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; font-weight: normal; line-height: 33px; color: rgb(88, 95, 105); margin: 0px 0px -2px; font-size: 22px; text-shadow: none; padding-bottom: 5px; display: inline-block; border-bottom: 2px solid rgb(0, 118, 192); border-radius: 0px !important;">예제 출력&nbsp;<button type="button" class="btn btn-link copy-button no-print" data-clipboard-target="#sample-output-1" style="font-weight: 400; line-height: 1.42857; font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans CJK KR&quot;, &quot;Noto Sans KR&quot;, 나눔바른고딕, 나눔고딕, NanumGothic, 맑은고딕, &quot;Malgun Gothic&quot;, &quot;Nanum Gothic&quot;, sans-serif; color: rgb(66, 139, 202); text-transform: none; padding: 0px; outline: 0px !important;">복사</button></h2></div><pre class="sampledata" id="sample-output-1" style="border-radius: 5px; overflow-x: scroll; font-family: Menlo, Monaco, &quot;Source Code Pro&quot;, consolas, monospace; font-size: 18px; padding: 8px; line-height: 1.42857; word-break: normal; word-wrap: normal; background-color: rgb(247, 247, 249); border-color: rgb(225, 225, 232);">2 1 3</pre></section></div></div></div><br></div><p>&gt; 풀이 방법&nbsp;</p><p>문제를 보고 딱 어떻게 풀어야 할 지 감이 잘 오지 않았다.&nbsp;<br>파트가 분할 정복이라 분할 정복의 방식으로 생각해보았다.&nbsp;<br><br>풀이 방법을 생각하고도 어마어마한 시간이 걸려서 문제를 해결했는데, 차차 시간을 줄여가야겠다.&nbsp;<br>그리고 더 엄밀하게 설계를 한 다음에 코딩에 들어가야 되겠다.<br>( 코딩을 하면서 문제를 발견하는 것도 있어서 과연 그게 정답인지는 잘 모르겠지만.&nbsp; )</p><p>문제 풀이 방식은 아래와&nbsp; 같다.&nbsp;</p><p>먼저 아래와 같은 트리를 생각해보고, 실제 순서를 프리오더, 인오더, 포스트오더에 따라서 기입해보았다.&nbsp;<br></p><p><img src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/image.png" style="width: 809px;"><br></p><p>여기에서 특징을 살펴보면 가장 최상단의 '루트노드' 가 postorder 에서는 가장 마지막에 나타나고,&nbsp;<br>inorder는 '루트노드' 가 나타나는 곳에서 왼쪽은 '루트노드의 왼쪽 자식 노드' 가 되고, 오른쪽은 '루트노드의 오른쪽 자식노드' 가 된다.&nbsp;</p><p>아래와 같이 표현해보자.&nbsp;<br>루트노드의 자식노드는 인오더와 포스트오더에서 동일하기 때문에, l 과 r 의 사이즈는 동일하다.<br><br></p><p><img src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/image(1).png" style="width: 1060px;"><br></p><p>이를 일반화하면 아래와 같다.&nbsp;<br>맨 처음에 주어진 인오더와 포스트오더를 루트노드를 찾아 루트노드의 좌우 노드를 찾아본다.&nbsp;<br>그 다음에는 루트노드의 자식노드의 각각을 다시 하나의 트리로 여기고, <br>자식노드의 inorder, postorder의 시작과 끝 index 를 인자로 넘겨서 또 분할해준다.&nbsp;<br><br>이와 같은 식으로 해주면, 이전 단계에서 찾은 루트노드의 왼쪽자식에 왼쪽 자식의 트리에서 만든 루트노드를 다시 연결해주고,<br>오른쪽 자식의 트리에서 루트노드를 이전 단계에서 찾은 루트노드의 오른쪽 자식으로 넣어준다.&nbsp;<br><img src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/image(2).png" style="width: 1118px;"><br></p><p>이와 같은 식으로 계속해서 진행해준다.&nbsp;<br>진행하다가 inorder와 postorder 의 시작, 끝 인덱스에서 시작이 끝보다 크면 바로 리턴하고,&nbsp;<br>동일할 경우에는 해당 노드가 단말노드이기 때문에 이전 단계의 부모의 자식으로 넣어주고 리턴한다.&nbsp;</p><p>소스코드는 아래와 같다.&nbsp;<br>설명이 좀 미약한데 앞으로는 주석을 더 열심히 달아야겠다.&nbsp;</p><p>&gt; 풀이&nbsp;</p><div class="colorscripter-code" style="color:#010101; font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px; border-right:2px solid #e5e5e5"><div style="margin: 0px; padding: 0px; word-break: normal; text-align: right; color: rgb(102, 102, 102); line-height: 130%;"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div><div style="line-height:130%">23</div><div style="line-height:130%">24</div><div style="line-height:130%">25</div><div style="line-height:130%">26</div><div style="line-height:130%">27</div><div style="line-height:130%">28</div><div style="line-height:130%">29</div><div style="line-height:130%">30</div><div style="line-height:130%">31</div><div style="line-height:130%">32</div><div style="line-height:130%">33</div><div style="line-height:130%">34</div><div style="line-height:130%">35</div><div style="line-height:130%">36</div><div style="line-height:130%">37</div><div style="line-height:130%">38</div><div style="line-height:130%">39</div><div style="line-height:130%">40</div><div style="line-height:130%">41</div><div style="line-height:130%">42</div><div style="line-height:130%">43</div><div style="line-height:130%">44</div><div style="line-height:130%">45</div><div style="line-height:130%">46</div><div style="line-height:130%">47</div><div style="line-height:130%">48</div><div style="line-height:130%">49</div><div style="line-height:130%">50</div><div style="line-height:130%">51</div><div style="line-height:130%">52</div><div style="line-height:130%">53</div><div style="line-height:130%">54</div><div style="line-height:130%">55</div><div style="line-height:130%">56</div><div style="line-height:130%">57</div><div style="line-height:130%">58</div><div style="line-height:130%">59</div><div style="line-height:130%">60</div><div style="line-height:130%">61</div><div style="line-height:130%">62</div><div style="line-height:130%">63</div><div style="line-height:130%">64</div><div style="line-height:130%">65</div><div style="line-height:130%">66</div><div style="line-height:130%">67</div><div style="line-height:130%">68</div><div style="line-height:130%">69</div><div style="line-height:130%">70</div><div style="line-height:130%">71</div><div style="line-height:130%">72</div><div style="line-height:130%">73</div><div style="line-height:130%">74</div><div style="line-height:130%">75</div><div style="line-height:130%">76</div><div style="line-height:130%">77</div><div style="line-height:130%">78</div><div style="line-height:130%">79</div><div style="line-height:130%">80</div><div style="line-height:130%">81</div><div style="line-height:130%">82</div><div style="line-height:130%">83</div><div style="line-height:130%">84</div><div style="line-height:130%">85</div></div></td><td style="padding-top: 6px; padding-bottom: 6px;"><div style="margin: 0px; padding: 0px; line-height: 130%;"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#0086b3">#include</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span>iostream<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#0086b3">#include</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span><span style="color:#0099cc">vector</span><span style="color:#ff3399">&gt;</span>&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">using</span>&nbsp;<span style="color:#ff3399">namespace</span>&nbsp;<span style="color:#0099cc">std</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">typedef</span>&nbsp;<span style="color:#ff3399">struct</span>&nbsp;tree_node&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">int</span>&nbsp;value&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#308ce5">1</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>&nbsp;left;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>&nbsp;right;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">}tree_node;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#0099cc">vector</span><span style="color:#ff3399">&lt;</span><span style="color:#0099cc">int</span><span style="color:#ff3399">&gt;</span>&nbsp;inorder_vec;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#0099cc">vector</span><span style="color:#ff3399">&lt;</span><span style="color:#0099cc">int</span><span style="color:#ff3399">&gt;</span>&nbsp;postorder_vec;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>&nbsp;oldest_parent;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">void</span>&nbsp;make_tree(<span style="color:#0099cc">int</span>&nbsp;inorder_start,&nbsp;<span style="color:#0099cc">int</span>&nbsp;inorder_end,&nbsp;<span style="color:#0099cc">int</span>&nbsp;postorder_start,&nbsp;<span style="color:#0099cc">int</span>&nbsp;postorder_end,&nbsp;<span style="color:#0099cc">int</span>&nbsp;direction,&nbsp;tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>&nbsp;parent)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">int</span>&nbsp;inorder_parent_index;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(inorder_start&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>&nbsp;inorder_end)&nbsp;<span style="color:#ff3399">return</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(postorder_start&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>&nbsp;postorder_end)&nbsp;<span style="color:#ff3399">return</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>&nbsp;sub_parent&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;(tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>)<span style="color:#0099cc">malloc</span>(<span style="color:#ff3399">sizeof</span>(tree_node));</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;sub_parent<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>left&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#0086b3">NULL</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;sub_parent<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>right&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#0086b3">NULL</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;sub_parent<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>value&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;postorder_vec.at(postorder_end);</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;param&nbsp;==&nbsp;root</span></div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(direction&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#308ce5">1</span>)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldest_parent&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;sub_parent;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;param&nbsp;==&nbsp;left&nbsp;</span></div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">else</span>&nbsp;<span style="color:#ff3399">if</span>&nbsp;(direction&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#308ce5">2</span>)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>left&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;sub_parent;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;param&nbsp;==&nbsp;right&nbsp;</span></div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">else</span>&nbsp;<span style="color:#ff3399">if</span>&nbsp;(direction&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#308ce5">3</span>)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>right&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;sub_parent;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(inorder_start&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;inorder_end)&nbsp;<span style="color:#ff3399">return</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">for</span>&nbsp;(<span style="color:#0099cc">int</span>&nbsp;i&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;inorder_start;&nbsp;i&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;inorder_end;&nbsp;i<span style="color:#039C43"></span><span style="color:#ff3399">+</span><span style="color:#039C43"></span><span style="color:#ff3399">+</span>)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(sub_parent<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>value&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;inorder_vec[i])&nbsp;{</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inorder_parent_index&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;i;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">break</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;right&nbsp;</span></div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;make_tree(inorder_parent_index&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">+</span>&nbsp;<span style="color:#308ce5">1</span>,&nbsp;inorder_end,&nbsp;postorder_end&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;(inorder_end&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;inorder_parent_index),&nbsp;postorder_end&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;<span style="color:#308ce5">1</span>,&nbsp;<span style="color:#308ce5">3</span>,&nbsp;sub_parent);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;left</span></div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;make_tree(inorder_start,&nbsp;inorder_parent_index&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;<span style="color:#308ce5">1</span>,&nbsp;postorder_start,&nbsp;postorder_start&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">+</span>&nbsp;(inorder_parent_index&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;inorder_start)&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;<span style="color:#308ce5">1</span>,&nbsp;<span style="color:#308ce5">2</span>,&nbsp;sub_parent);</div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">void</span>&nbsp;make_preorder(tree_node<span style="color:#039C43"></span><span style="color:#ff3399">*</span>&nbsp;each_node)&nbsp;{</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(each_node&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span><span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#0086b3">NULL</span>)&nbsp;<span style="color:#ff3399">return</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">cout</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span><span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span>&nbsp;each_node<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>value&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span><span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span>&nbsp;<span style="color:#993333">"&nbsp;"</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;make_preorder(each_node<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>left);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;make_preorder(each_node<span style="color:#039C43"></span><span style="color:#ff3399">-</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>right);</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%"><span style="color:#0099cc">int</span>&nbsp;main()&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">int</span>&nbsp;total_num&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#308ce5">0</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">cin</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>&nbsp;total_num;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;making&nbsp;inorder&nbsp;and&nbsp;postorder&nbsp;</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">for</span>&nbsp;(<span style="color:#0099cc">int</span>&nbsp;i&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#308ce5">0</span>;&nbsp;i&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span>&nbsp;total_num;&nbsp;i<span style="color:#039C43"></span><span style="color:#ff3399">+</span><span style="color:#039C43"></span><span style="color:#ff3399">+</span>)&nbsp;{</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">int</span>&nbsp;sub;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">cin</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>&nbsp;sub;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inorder_vec.<span style="color:#0099cc">push_back</span>(sub);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">for</span>&nbsp;(<span style="color:#0099cc">int</span>&nbsp;i&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#308ce5">0</span>;&nbsp;i&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&lt;</span>&nbsp;total_num;&nbsp;i<span style="color:#039C43"></span><span style="color:#ff3399">+</span><span style="color:#039C43"></span><span style="color:#ff3399">+</span>)&nbsp;{</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">int</span>&nbsp;sub;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0099cc">cin</span>&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span><span style="color:#039C43"></span><span style="color:#ff3399">&gt;</span>&nbsp;sub;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;postorder_vec.<span style="color:#0099cc">push_back</span>(sub);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;find&nbsp;preorder&nbsp;</span></div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;make_tree(<span style="color:#308ce5">0</span>,&nbsp;total_num&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;<span style="color:#308ce5">1</span>,&nbsp;<span style="color:#308ce5">0</span>,&nbsp;total_num&nbsp;<span style="color:#039C43"></span><span style="color:#ff3399">-</span>&nbsp;<span style="color:#308ce5">1</span>,&nbsp;<span style="color:#308ce5">1</span>,&nbsp;<span style="color:#0086b3">NULL</span>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;make_preorder(oldest_parent);</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">return</span>&nbsp;<span style="color:#308ce5">0</span>;</div><div style="background-color:#f0f0f0; padding:0 6px; white-space:pre; line-height:130%">}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div></div><div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color: rgb(229, 229, 229);">Colored by Color Scripter</a></div></td><td style="vertical-align: bottom; padding-right: 2px; padding-bottom: 4px;"><a href="http://colorscripter.com/info#e" target="_blank" style="color: white;"><span style="font-size: 9px; word-break: normal; background-color: rgb(229, 229, 229); border-radius: 10px; padding: 1px;">cs</span></a></td></tr></tbody></table></div></div><section class="article__sharing d-print-none"></section><div class="d-print-none">
+    <br><footer class="article__footer"><meta itemprop="dateModified" content="2018-02-04T00:00:00+09:00"><!-- start custom article footer snippet -->
+<script async="" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/f.txt"></script>
+<ins class="adsbygoogle" style="display: block; text-align: center; height: 200px;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9601240193039960" data-ad-slot="7045115963" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:893px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:893px;background-color:transparent;"><iframe width="893" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:893px;height:200px;" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource(2).html"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- end custom article footer snippet --><div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="http://melonicedlatte.com/feed.xml">Subscribe</a></div></div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/88x31.png">
+      </a>
+    </p>
+  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="http://melonicedlatte.com/algorithm/2018/02/02/014531.html">[백준] 1931번 C/C++ 풀이 _ 회의실배정</a></div><div class="next"><span>NEXT</span><a href="http://melonicedlatte.com/algorithm/2018/02/05/173200.html">[백준] 2661번 C/C++ 풀이 _ 문제 링크</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script></div><br>
+                      <section class="page__comments d-print-none"><div id="disqus_thread"><iframe id="dsq-app4497" name="dsq-app4497" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource(3).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 390px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+  <script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  var disqus_config = function () {
+    this.page.url = 'http://melonicedlatte.com/algorithm/2018/02/04/145104.html';
+    this.page.identifier = '[백준] 2263번 C/C++ 풀이 _ 트리의 순회';
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://melonicedlatte-github-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><!-- start custom comments snippet -->
+<style>
+    .fb-comments iframe{
+        width: 100% !important;
+    }
+</style>
+
+<br>
+<!-- facebook script  -->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/d_vbiawPdxB(1).html" style="border: none;"></iframe></div><div></div></div></div>
+<script async="" defer="" crossorigin="anonymous" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/sdk.js(3).다운로드"></script><div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop" data-href="http://hellogohn.com/post_one209" data-numposts="20" data-width="100%" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=203894147008906&amp;container_width=893&amp;height=100&amp;href=http%3A%2F%2Fhellogohn.com%2Fpost_one209&amp;locale=ko_KR&amp;numposts=20&amp;sdk=joey&amp;version=v3.2" style="width: 100%;"><span style="vertical-align: bottom; width: 100%; height: 187px;"><iframe name="f600b2106554d4" width="1000px" height="100px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:comments Facebook Social Plugin" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/comments.html" style="border: none; visibility: visible; width: 100%; height: 187px;" class=""></iframe></span></div><!-- end custom comments snippet --></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="melonicedlatte"><meta itemprop="url" content="http://melonicedlatte.com"><meta itemprop="description" content="Want to make some good product for world"><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="http://melonicedlatte.com/"><li title="Send me an Email.">
+      <a class="button button--circle mail-button" itemprop="email" href="mailto:melonicedlatte@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a></li><li title="Follow me on Github.">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/melonicedlatte" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z"></path>
+</svg>
+</div>
+        </a>
+      </li></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© Easy is Perfect 2019,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text">
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA ? initData(window.TEXT_SEARCH_DATA) : {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  function initData(data) {
+    var _data = [], i, j, key, keys, cur;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i], _data[key] = [];
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        cur.title = window.decodeUrl(cur.title);
+        cur.url = window.decodeUrl(cur.url);
+        _data[key].push(cur);
+      }
+    }
+    return _data;
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource(4).html"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_3651541387464" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource(5).html"></iframe><iframe style="display: none;" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/saved_resource(6).html"></iframe></body><iframe id="google_esf" name="google_esf" src="./[백준] 2263번 C_C++ 풀이 _ 트리의 순회 - Easy is Perfect_files/zrt_lookup.html" data-ad-client="ca-pub-9601240193039960" style="display: none;"></iframe></html>
