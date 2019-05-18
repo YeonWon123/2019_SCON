@@ -2,8 +2,8 @@
 #include <algorithm>
 using namespace std;
 
-int house_cost[1001][3];
-int result[1001][3];
+int house_cost[1001][3] = { 0, };
+int result[1001][3] = { 0, };
 
 
 int main(void)
