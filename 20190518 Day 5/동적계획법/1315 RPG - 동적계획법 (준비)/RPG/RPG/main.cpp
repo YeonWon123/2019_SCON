@@ -17,10 +17,6 @@ using namespace std;
 //
 //4. 3번에서 구한 퀘스트의 수 중 최대값을 반환합니다
 
-
-
-
-
 const int MAX = 100 + 1;
 
 int N;
@@ -52,7 +48,7 @@ int maxQuest(int strength, int intelligence)
 
 	for (int i = 0; i < N; i++)
 	{
-			//클리어할 수 있는 퀘스트 수
+		//클리어할 수 있는 퀘스트 수
 		if (arr[i].first.first <= strength || arr[i].first.second <= intelligence)
 		{
 			if (!visited[i])  // 그중에서도 아직 클리어하지 않은 퀘스트

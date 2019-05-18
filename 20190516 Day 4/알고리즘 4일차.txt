@@ -1,0 +1,37 @@
+2019-05-16 (목) 알고리즘 4일차
+
+1. 동적계획법(Dynamic Programming)
+
+ - 1932 정수 삼각형 (윤원 발표)
+	- 2-D array로 풀기
+	- 1-D array로도 풀이 가능
+ - 2293 동전 1 (명원 발표)
+	- 1-D array로 풀기
+ - 1149 RGB거리 (명원 발표)
+	- 2-D array로 풀기
+ - 1005 ACM Craft (윤원 발표)
+	- 2-D array로 풀기
+
+ 	- maximum sum(최대 합, 부분 합) 구하는 방법에 대해 discuss
+	- 누적 합에 대해서 Greedy하게 푸는거지, input에 대해서 Greedy하게 푸는 게 아니다!
+	- 아래에서부터 위로 올라가는 bottom-up 방식, 1-D array 또는 2-D array를 선언하고, 채워 나가는 기법
+
+
+다음 일정 : 5월 18일 토요일 정오 ~ 3시 (도서관 1층 세미나룸 6) / 4시 반 ~ 9시 (일단 예약은 저렇게 잡았으나, 시간은 유동적으로 활용 예정, 숭덕경상관 317호)
+ -> 동적 계획법(Dynamic Programming)을 할 예정
+ -> Special 2. 문자열 다루기 부분 진행 예정
+ -> 탐욕법(Greedy Approach)과 비교하기 진행 예정
+
+< 진행 예정 사항> -> 최대한 할 수 있는데까지 진행
+ - 브루트 포스 (Brute-force) -> 완료
+ - 분할 정복 (Divide-and-conquer) -> 완료
+ - 동적 계획법 (Dynamic Programming) -> 진행 중
+ - 그리디 알고리즘 (Greedy Approach) -> 진행 예정
+ - 백트래킹 (Backtracking) -> 진행 중
+ - 트리 사용하기 (Breath First Search, Depth First Search) -> 진행 중(Special)
+ - 그래프 (Graph Theory)
+
+ - STL 사용하기 -> vector, iterator, ::, max, min (#include <algorithm>)
+ - 문자열 사용하기
+ - 구현
+ - 최대공약수 / 최소공배수 / 수학(특히 소수)

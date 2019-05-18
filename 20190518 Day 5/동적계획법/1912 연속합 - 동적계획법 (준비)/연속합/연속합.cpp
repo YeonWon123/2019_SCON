@@ -54,7 +54,7 @@ int main(void)
 	for (int i = 0; i < n; i++) {
 		sum += input[i];
 		if (sum < 0) { // 음수이면
-			sum = 0; // answer = 0으로 두고 새 구간부터 start
+			sum = 0;   // sum = 0으로 두고 새 구간부터 start
 		}
 
 		if (answer < sum) {

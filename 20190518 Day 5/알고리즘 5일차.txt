@@ -1,0 +1,72 @@
+2019-05-18 (토) 알고리즘 5일차
+
+1. 동적계획법(Dynamic Programming)
+
+ - 1932 RPG (명원 발표)
+	- 가능한 모든 경우에 대해 해보되, 이미 한번 계산된 값에 대해서는 재계산하지 않는다.
+	- STL::pair<>의 사용
+ - 11062 카드 게임 (명원 발표)
+	- 왼쪽과 오른쪽 각각에 대해 계속 올라간다. (bottom-up), 일단 한 번 끝까지 갔으면, visit 배열의 초기화가 필요하다.
+ - 1912 연속합 (윤원 발표)
+ - 9461 파도반 수열 (윤원 발표)
+	- 규칙성을 찾아서, 점화식을 세우는 것이 매우 중요
+ - 2449 전구 (윤원 발표)
+
+	- 누적 합에 대해서 Greedy하게 푸는거지, input에 대해서 Greedy하게 푸는 게 아니다!
+	- 아래에서부터 위로 올라가는 bottom-up 방식, 1-D array 또는 2-D array를 선언하고, 채워 나가는 기법
+	- 메모이제이션 기법!!! -> 다음 사이트에 들어가서 Dynamic Programming, 메모이제이션에 대해 숙지, 정리해 올 것 (1부터 5까지 있음)
+          https://new93helloworld.tistory.com/220
+
+ - 3144 사과와 바나나 (Day 4에 있는 부분)
+
+ 	- maximum sum(최대 합, 부분 합) 구하는 방법에 대해 discuss
+
+
+2. Special 2. 문자열 다루기
+
+ - 9251 LCS (명원 발표)
+ - 10942 팰린드롬
+ - 1259 팰린드롬 수 (마무리 과제)
+ - 1509 팰린드롬 분할 (개수 구하기, dp_min[]과 dp[][]로 점화식을 세워서 풀 수 있음) (마무리 과제)
+ - 11053 가장 긴 증가하는 부분 수열 (STL::lower_bound, upper_bound로 문제 풀어 보기) (마무리 과제)
+
+-> 문자열 다루기 역시 Dynamic Programming 또는 memoization으로 푸는 문제들이 많으며, 따라서 충분한 코딩 연습을 필요로 함
+-> 따라서 이에 대해 코드적으로 마무리를 할 필요가 있는데, 주의할 사항은 다음과 같음
+ (1) Overflow를 조심 (int가 부족하면 long long)
+ (2) index를 조심 (int i면, i가 어디서 시작해서 어디서 끝나는지, 이중 포문이면 i와 j를 독립시킬지 아니면 관계가 있는지 등등)
+ (3) 점화식을 잘 세우자 (초기설정, 점화식, 배열을 어떻게 설정할지 등등)
+
+
+다음 일정 : 5월 21일 화요일 오후 6시 ~ 9시 (문화관 411호, 전산수학 TA 시간에 따라 +-1시간 차이 있을 수 있음)
+ -> 동적 계획법(Dynamic Programming)과 탐욕법(Greedy Approach)를 비교해 볼 예정
+ -> Backtracking에 대해서 다뤄볼 예정
+ -> Special 2. 문자열 다루기 부분 마무리할 예정 (LCS 문제, LIS 문제)
+ -> BFS, DFS에 대해 학습하고, CCW에 대해 학습하고 문제를 나눌 예정
+
+
+< 준비 예정 사항 >
+ - 마무리 문제 (답을 보지 않고 혼자 힘으로 코드를 완성해 보기, 단 STL은 예외)
+  (1) 1259 팰린드롬 수 -> 입력값을 int로도 받아 보고, char [] 또는 string으로 받아 보기
+  (2) 1509 팰린드롬 분할 -> dp_min[]과 dp[][]로 점화식을 세워서 마무리해보기
+  (3) 11053 가장 긴 증가하는 부분 수열 -> 인터넷에서 STL::lower_bound와 upper_bound를 찾아 보고, 이를 토대로 문제를 풀어 보기, 첨부 ppt 참고
+
+ - 준비 문제 (최대한 많은 좋은 풀이를 보고 자기 것으로 만들기, 단 (3)의 경우는 스스로 해보기)
+ (1) 동전 0, 동전 2 (명원 준비 -> Greedy Approach vs Dynamic Programming)
+ (2) 회의실 배정, 좋은 수열, 순열 장난 (윤원 준비 -> Backtracking)
+ (3) 단어 수학 (같이 준비, 방법이 많으니 어떠한 방법으로든, 답지를 보지 않고 구현해보기)
+
+
+
+< 진행 예정 사항> -> 최대한 할 수 있는데까지 진행
+ - 브루트 포스 (Brute-force) -> 완료
+ - 분할 정복 (Divide-and-conquer) -> 완료
+ - 동적 계획법 (Dynamic Programming) -> 진행 중
+ - 그리디 알고리즘 (Greedy Approach) -> 진행 중
+ - 백트래킹 (Backtracking) -> 진행 예정
+ - 트리 사용하기 (Breath First Search, Depth First Search) -> 진행 중(Special)
+ - 그래프 (Graph Theory)
+
+ - STL 사용하기 -> vector, iterator, ::, max, min (#include <algorithm>), pair, lower_bound, upper_bound
+ - 문자열 사용하기 -> string, palindrome, LCS, LIS
+ - 구현 -> 카드 게임, ACM Craft
+ - 최대공약수 / 최소공배수 / 수학(특히 소수) -> 진행 예정
