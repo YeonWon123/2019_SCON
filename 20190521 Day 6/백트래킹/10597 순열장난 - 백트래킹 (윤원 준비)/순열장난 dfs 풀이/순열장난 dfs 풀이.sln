@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "순열장난 dfs 풀이", "순열장난 dfs 풀이.vcxproj", "{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Debug|x64.ActiveCfg = Debug|x64
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Debug|x64.Build.0 = Debug|x64
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Debug|x86.ActiveCfg = Debug|Win32
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Debug|x86.Build.0 = Debug|Win32
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Release|x64.ActiveCfg = Release|x64
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Release|x64.Build.0 = Release|x64
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Release|x86.ActiveCfg = Release|Win32
+		{3E4981A1-7673-44E7-9FCF-1124EC30ABE8}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {812A0031-81EF-4430-8DEA-AC7FF605A4E4}
+	EndGlobalSection
+EndGlobal
