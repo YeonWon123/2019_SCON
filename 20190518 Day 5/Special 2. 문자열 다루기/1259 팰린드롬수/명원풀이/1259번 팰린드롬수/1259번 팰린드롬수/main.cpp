@@ -32,6 +32,9 @@ int main(void)
 
 		DPmake(a); //  DP 배열을 채워준다.
 
+		if (a == 0)
+			break;
+
 		if (number[0][N - 1])
 			cout << "yes" << "\n";
 		else
@@ -46,7 +49,7 @@ int main(void)
 	 // DPmake 함수를 통해 만든다.
 
 
-	system("pause");
+	//system("pause");
 			return 0;
 }
 
